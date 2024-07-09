@@ -1,0 +1,37 @@
+.message-form {
+    display: flex;
+    padding: 1rem;
+    background-color: #1e1e1e;
+    border-top: 1px solid #333;
+  }
+  
+  .message-form input {
+    flex: 1;
+    padding: 0.75rem;
+    border: none;
+    border-radius: 0.5rem;
+    margin-right: 0.5rem;
+    background-color: #333;
+    color: #ffffff;
+  }
+  
+  .message-form button {
+    display: flex;
+    align-items: center;
+    padding: 0.75rem 1rem;
+    border: none;
+    border-radius: 0.5rem;
+    background-color: #2a9d8f;
+    color: #ffffff;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .message-form button:hover {
+    background-color: #21867a;
+  }
+  
+  .message-form button span {
+    margin-left: 0.5rem;
+  }
+  
