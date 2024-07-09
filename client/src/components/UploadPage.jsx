@@ -126,7 +126,7 @@ function UploadPage() {
     // }
     // navigate('/chat');
     try {
-      const response = await axios.post('http://localhost:8080/upload', formData, {
+      const response = await axios.post('https://pdf-chatbot-workshop.onrender.com/upload', formData, {
         headers: { 'Content-Type': 'multipart/form-data','userid': 'kunal456' },
       });
       localStorage.setItem('projectID', response.data.projectID);

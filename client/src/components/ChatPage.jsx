@@ -77,7 +77,7 @@ function ChatPage() {
     e.target.reset();
 
     try {
-      const response = await axios.post('http://localhost:8080/query', {
+      const response = await axios.post('https://pdf-chatbot-workshop.onrender.com/query', {
         query: userMessage,
         projectID: projectID,
       });
@@ -89,10 +89,6 @@ function ChatPage() {
       setMessages([...newMessages, { sender: 'bot', text: 'Error getting response from server.' }]);
     }
   };
-
-  useEffect(() => {
-    console.log(messages);
-  }, [messages])
 
   return (
     <div className="ChatPage">
