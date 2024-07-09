@@ -4,6 +4,7 @@
 /server/local_cache
 /server/.env
 /server/uploads
+/client/.env
 # Logs
 logs
 *.log

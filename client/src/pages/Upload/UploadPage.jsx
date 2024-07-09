@@ -4,11 +4,13 @@ import { useDropzone } from 'react-dropzone';
 import { uploadFile } from '../../api/index';
 import './UploadPage.css';
 import { AiOutlineCloudUpload } from 'react-icons/ai';
+import useAuth from '../../hooks/useAuth';
 
 function UploadPage() {
   const [file, setFile] = useState(null);
   const [isUploading, setIsUploading] = useState(false);
   const navigate = useNavigate();
+  useAuth();
 
   const onDrop = useCallback((acceptedFiles) => {
     const pdfFile = acceptedFiles[0];

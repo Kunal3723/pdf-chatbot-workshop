@@ -1,0 +1,7 @@
+export const FIREBASE_API_KEY = 'AIzaSyBqIQvGk2JYtDsKSyPaSMGV_ktqZ7xWQXc'
+export const FIREBASE_AUTH_DOMAIN = 'foodapp-d170b.firebaseapp.com'
+export const FIREBASE_PROJECT_ID = 'foodapp-d170b'
+export const FIREBASE_STORAGE_BUCKET = 'foodapp-d170b.appspot.com'
+export const FIREBASE_MESSAGING_SENDER_ID = '455478360233'
+export const FIREBASE_APP_ID = '1:455478360233:web:94f81847319d0e0dbb91b8'
+export const FIREBASE_MEASUREMENT_ID = 'G-H99MN3FJVT'

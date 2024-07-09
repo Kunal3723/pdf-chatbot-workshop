@@ -5,6 +5,7 @@ import useScrollToBottom from '../../hooks/useScrollToBottom';
 import useProjectIDAuth from '../../hooks/useProjectIDAuth';
 import MessageList from '../../components/MessageList/MessageList';
 import MessageForm from '../../components/MessageForm/MessageForm';
+import useAuth from '../../hooks/useAuth';
 
 function ChatPage() {
   const projectID = localStorage.getItem('projectID');
@@ -15,6 +16,7 @@ function ChatPage() {
 
   // Custom hook for checking projectID and redirecting if not present
   useProjectIDAuth(projectID);
+  useAuth();
 
   const handleSendMessage = async (userMessage) => {
     if (!userMessage.trim()) return;
