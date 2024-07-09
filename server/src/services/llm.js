@@ -30,7 +30,16 @@ export async function generateResponse(query, retrievedDocs) {
             }
         };
         const data = await callLLM(payload);
-        return data[0].generated_text;
+        // Extract only the text after the last newline character
+        const responseText = data[0].generated_text;
+        const lastNewlineIndex = responseText.lastIndexOf('\n');
+
+        if (lastNewlineIndex !== -1) {
+            return responseText.substring(lastNewlineIndex + 1).trim();
+        }
+
+        // If no newline is found, return the full response
+        return responseText.trim();
     } catch (error) {
         console.log(error);
     }
