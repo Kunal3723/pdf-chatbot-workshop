@@ -1,7 +1,10 @@
 /client/node_modules
 /server/node_modules
-node_modules
-
+/node_modules
+/server/local_cache
+/server/.env
+/server/uploads
+/client/.env
 # Logs
 logs
 *.log

@@ -1,4 +1,4 @@
-#root {
+/* /* #root {
   max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
@@ -39,4 +39,87 @@
 
 .read-the-docs {
   color: #888;
+} */
+
+/*.App {
+  text-align: center;
+}
+
+.UploadPage, .ChatPage {
+  text-align: center;
+  margin-top: 50px;
+}
+
+#chatBox {
+  margin-top: 20px;
+}
+
+#messages {
+  border: 1px solid #ccc;
+  padding: 10px;
+  height: 300px;
+  overflow-y: scroll;
+  margin-bottom: 10px;
+}
+
+.message {
+  margin: 5px 0;
+}
+
+.message.User {
+  text-align: left;
+  color: blue;
+}
+
+.message.Bot {
+  text-align: right;
+  color: green;
+}
+
+input[type="file"] {
+  display: block;
+  margin: 10px auto;
+}
+
+button {
+  margin: 5px;
+} */
+
+.App {
+  text-align: center;
+}
+
+#chatBox {
+  margin-top: 20px;
+}
+
+#messages {
+  border: 1px solid #ccc;
+  padding: 10px;
+  height: 300px;
+  overflow-y: scroll;
+  margin-bottom: 10px;
+}
+
+.message {
+  margin: 5px 0;
+}
+
+.message.User {
+  text-align: left;
+  color: blue;
+}
+
+.message.Bot {
+  text-align: right;
+  color: green;
+}
+
+input[type="file"] {
+  display: block;
+  margin: 10px auto;
+}
+
+button {
+  margin: 5px;
 }
