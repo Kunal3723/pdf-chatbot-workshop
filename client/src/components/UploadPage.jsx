@@ -120,16 +120,16 @@ function UploadPage() {
 
     const formData = new FormData();
     formData.append('file', file);
-     
+
     // for (let [key, value] of formData.entries()) {
     //   console.log(`${key}:`, value);
     // }
     // navigate('/chat');
     try {
-      const response = await axios.post('/upload', formData, {
-        headers: { 'Content-Type': 'multipart/form-data' },
+      const response = await axios.post('http://localhost:8080/upload', formData, {
+        headers: { 'Content-Type': 'multipart/form-data','userid': 'kunal456' },
       });
-      localStorage.setItem('pdfText', response.data.text);
+      localStorage.setItem('projectID', response.data.projectID);
       navigate('/chat');
     } catch (error) {
       console.error('Error uploading file:', error);

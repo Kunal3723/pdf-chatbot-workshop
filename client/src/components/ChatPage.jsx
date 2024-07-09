@@ -56,7 +56,7 @@
 // export default ChatPage;
 
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import axios from 'axios';
 import './ChatPage.css';
@@ -64,7 +64,7 @@ import './ChatPage.css';
 function ChatPage() {
   const location = useLocation();
   const { pdfText } = location.state || {};
-
+  const projectID = localStorage.getItem('projectID');
   const [messages, setMessages] = useState([]);
 
   const handleSendMessage = async (e) => {
@@ -77,17 +77,22 @@ function ChatPage() {
     e.target.reset();
 
     try {
-      const response = await axios.post('/chat', {
-        message: userMessage,
-        pdfText: pdfText,
+      const response = await axios.post('http://localhost:8080/query', {
+        query: userMessage,
+        projectID: projectID,
       });
-      const botResponse = response.data.reply;
-      setMessages([...newMessages, { sender: 'bot', text: botResponse }]);
+      const botResponse = response.data;
+      console.log(botResponse);
+      setMessages([...newMessages, { sender: 'bot', text: botResponse.response }]);
     } catch (error) {
       console.error('Error getting bot response:', error);
       setMessages([...newMessages, { sender: 'bot', text: 'Error getting response from server.' }]);
     }
   };
+
+  useEffect(() => {
+    console.log(messages);
+  }, [messages])
 
   return (
     <div className="ChatPage">
