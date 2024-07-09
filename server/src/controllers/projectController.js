@@ -1,11 +1,12 @@
 import { v4 as uuidv4 } from 'uuid';
 import path from 'path';
 import fs from 'fs';
-import { doc, updateDoc } from 'firebase/firestore';
 
 import { getAllProjects, storeProjectInfo, uploadPdfToFirebase } from '../utils/dbFunctions.js';
-import { deleteFolder, generateResponse, getEmbeddingModel, getIndex, insertEmbeddingsIntoDB, retrieveDocuments } from '../utils/embeddingFunctions.js';
-import { db } from '../config/firebaseConfig.js';
+import { getIndex, insertEmbeddingsIntoDB } from '../services/index.js';
+import { deleteFolder } from '../utils/files.js';
+import { getEmbeddingModel } from '../services/embeddings.js';
+import { generateResponse, retrieveDocuments } from '../services/llm.js';
 
 export const uploadPdf = async (req, res) => {
     const file = req.file;
@@ -38,15 +39,9 @@ export const uploadPdf = async (req, res) => {
 
     await insertEmbeddingsIntoDB(randomString, projectID);
     deleteFolder(randomString);
-    const projectDocRef = doc(db, 'projects', userID);
-    await updateDoc(projectDocRef, {
-        [`${projectID}.status`]: 'Completed'
-    });
-
 
     res.status(200).json({ message: "File processed and saved successfully" });
     console.log("File processed and saved successfully");
-    // await addJob(userID, projectID, randomString);
 }
 
 export const getProjects = async (req, res) => {
