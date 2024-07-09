@@ -8,11 +8,11 @@ export async function callLLM(payload) {
     return response.data;
 }
 
-export async function retrieveDocuments(query, index, embeddingModel, top_k = 5) {
+export async function retrieveDocuments(query, index, embeddingModel, projectID, top_k = 5) {
     try {
         let queryEmbedding = await embeddingModel.queryEmbed(query);
         queryEmbedding = [Array.from(queryEmbedding)];
-        const result = await index.query({ vector: queryEmbedding[0], topK: top_k, includeMetadata: true });
+        const result = await index.namespace(projectID).query({ vector: queryEmbedding[0], topK: top_k, includeMetadata: true });
         return result.matches.map(item => new Document({ text: item.metadata.text }));
     } catch (error) {
         console.log(error);

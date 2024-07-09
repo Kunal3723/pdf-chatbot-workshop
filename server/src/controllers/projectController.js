@@ -40,7 +40,7 @@ export const uploadPdf = async (req, res) => {
     await insertEmbeddingsIntoDB(randomString, projectID);
     deleteFolder(randomString);
 
-    res.status(200).json({ message: "File processed and saved successfully" });
+    res.status(200).json({ message: "File processed and saved successfully", projectID: projectID });
     console.log("File processed and saved successfully");
 }
 
@@ -64,14 +64,14 @@ export const getProjects = async (req, res) => {
     }
 }
 
-export const queryResponse =  async (req, res) => {
-    const { query } = req.body;
+export const queryResponse = async (req, res) => {
+    const { query, projectID } = req.body;
     if (!query) {
         return res.status(400).json({ error: "Query is required" });
     }
     const index = getIndex();
     const embeddingModel = await getEmbeddingModel();
-    const retrievedDocs = await retrieveDocuments(query, index, embeddingModel);
+    const retrievedDocs = await retrieveDocuments(query, index, embeddingModel, projectID);
     console.log(retrievedDocs);
     const response = await generateResponse(query, retrievedDocs);
     res.json({ response });

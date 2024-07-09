@@ -33,6 +33,5 @@ export async function insertEmbeddingsIntoDB(folderName, projectID) {
         values: embeddings[i],
         metadata: { text: doc.text },
     }));
-    console.log(index);
     await index.namespace(projectID).upsert(vectors);
 }
