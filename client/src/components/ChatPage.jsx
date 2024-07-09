@@ -1,64 +1,8 @@
-// import React, { useState, useEffect } from 'react';
-// import axios from 'axios';
-// import './ChatPage.css'
-
-// function ChatPage() {
-//   const [messages, setMessages] = useState([]);
-//   const [userMessage, setUserMessage] = useState('');
-//   const [pdfText, setPdfText] = useState('');
-
-//   useEffect(() => {
-//     const storedText = localStorage.getItem('pdfText');
-//     if (storedText) {
-//       setPdfText(storedText);
-//     }
-//   }, []);
-
-//   const handleMessageSend = async () => {
-//     if (!userMessage.trim()) return;
-
-//     const newMessage = { user: 'User', text: userMessage };
-//     setMessages([...messages, newMessage]);
-
-//     try {
-//       const response = await axios.post('/chat', { message: userMessage });
-//       const botMessage = { user: 'Bot', text: response.data.response };
-//       setMessages((prevMessages) => [...prevMessages, botMessage]);
-//     } catch (error) {
-//       console.error('Error sending message:', error);
-//     }
-
-//     setUserMessage('');
-//   };
-
-//   return (
-//     <div className="ChatPage">
-//       <h1>Chat with Bot</h1>
-//       <div id="chatBox">
-//         <div id="messages">
-//           {messages.map((msg, index) => (
-//             <div key={index} className={`message ${msg.user}`}>
-//               <strong>{msg.user}:</strong> {msg.text}
-//             </div>
-//           ))}
-//         </div>
-//         <input
-//           type="text"
-//           value={userMessage}
-//           onChange={(e) => setUserMessage(e.target.value)}
-//         />
-//         <button onClick={handleMessageSend}>Send</button>
-//       </div>
-//     </div>
-//   );
-// }
-
-// export default ChatPage;
-
-
 import React, { useEffect, useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import { auth } from '../firebase';
 import './ChatPage.css';
 
 function ChatPage() {
@@ -66,6 +10,14 @@ function ChatPage() {
   const { pdfText } = location.state || {};
   const projectID = localStorage.getItem('projectID');
   const [messages, setMessages] = useState([]);
+  const [user] = useAuthState(auth);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!user) {
+      navigate('/');
+    }
+  }, [user, navigate]);
 
   const handleSendMessage = async (e) => {
     e.preventDefault();
@@ -82,7 +34,6 @@ function ChatPage() {
         projectID: projectID,
       });
       const botResponse = response.data;
-      console.log(botResponse);
       setMessages([...newMessages, { sender: 'bot', text: botResponse.response }]);
     } catch (error) {
       console.error('Error getting bot response:', error);
@@ -90,16 +41,17 @@ function ChatPage() {
     }
   };
 
+  if (!user) {
+    return null;
+  }
+
   return (
     <div className="ChatPage">
       <h1>Chat with PDF</h1>
       <div className="chat-container">
         <div className="messages">
           {messages.map((message, index) => (
-            <div
-              key={index}
-              className={`message ${message.sender === 'user' ? 'user-message' : 'bot-message'}`}
-            >
+            <div key={index} className={`message ${message.sender === 'user' ? 'user-message' : 'bot-message'}`}>
               {message.text}
             </div>
           ))}
