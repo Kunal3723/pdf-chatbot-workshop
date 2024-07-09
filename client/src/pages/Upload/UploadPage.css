@@ -1,0 +1,70 @@
+.UploadPage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 0;
+  background-color: #121212;
+  color: #e0e0e0;
+}
+
+h1 {
+  margin-bottom: 2rem;
+}
+
+.dropzone {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80%;
+  height: 20rem;
+  border: 2px dotted #888;
+  border-radius: 1rem;
+  background-color: #1e1e1e;
+  color: #888;
+  cursor: pointer;
+  transition: border-color 0.2s ease-in-out;
+}
+
+.dropzone:hover {
+  border-color: #e0e0e0;
+}
+
+.dropzone-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+}
+
+.browse-file {
+  color: #1e90ff;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.selectedFile {
+  padding: .5rem 0;
+}
+
+.UploadPage button {
+  margin-top: 1rem;
+  padding: 0.5rem 2rem;
+  font-size: 1.3rem;
+  border: none;
+  border-radius: 2.5rem;
+  background-color: #1e90ff;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.UploadPage button:disabled {
+  background-color: #555;
+  cursor: not-allowed;
+}
+
+.UploadPage button:hover:not(:disabled) {
+  background-color: #007acc;
+}

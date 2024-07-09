@@ -1,0 +1,43 @@
+.messages {
+    flex: 1;
+    padding: 1rem;
+    overflow-y: auto;
+}
+
+.msg-cnt {
+    display: flex;
+    flex-direction: column;
+    min-height: 65vh;
+}
+
+.message {
+    margin: 0.5rem 0;
+    padding: 0.75rem 1rem;
+    border-radius: 0.5rem;
+    max-width: 80%;
+}
+
+.user-message {
+    align-self: flex-end;
+    background-color: #2a9d8f;
+    color: #ffffff;
+}
+
+.bot-message {
+    align-self: flex-start;
+    background-color: #264653;
+    color: #ffffff;
+}
+
+.messages::-webkit-scrollbar {
+    width: 4px;
+}
+
+.messages::-webkit-scrollbar-track {
+    background: #333;
+}
+
+.messages::-webkit-scrollbar-thumb {
+    background-color: #888;
+    border-radius: 10px;
+}

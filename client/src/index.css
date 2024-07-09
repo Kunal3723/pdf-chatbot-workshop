@@ -1,43 +1,20 @@
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+body {
+  box-sizing: border-box;
+  background-color: #121212;
+}
+
 .App {
   text-align: center;
 }
 
-.UploadPage, .ChatPage {
-  text-align: center;
-  margin-top: 50px;
-}
-
-#chatBox {
-  margin-top: 20px;
-}
-
-#messages {
-  border: 1px solid #ccc;
-  padding: 10px;
-  height: 300px;
-  overflow-y: scroll;
-  margin-bottom: 10px;
-}
-
-.message {
-  margin: 5px 0;
-}
-
-.message.User {
-  text-align: left;
-  color: blue;
-}
-
-.message.Bot {
-  text-align: right;
-  color: green;
-}
-
-input[type="file"] {
-  display: block;
-  margin: 10px auto;
-}
-
-button {
-  margin: 5px;
+button{
+  margin-top: 0;
 }

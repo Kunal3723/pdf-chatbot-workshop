@@ -1,8 +1,8 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import UploadPage from './components/UploadPage';
-import ChatPage from './components/ChatPage';
-import Navbar from './components/Navbar';
+import UploadPage from './pages/Upload/UploadPage';
+import ChatPage from './pages/Chat/ChatPage';
+import Navbar from './components/Navbar/Navbar';
 
 function App() {
   return (
